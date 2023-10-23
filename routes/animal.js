@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
 
+const animalController = require("../controllers/animals")
+
 /**
  * Get all animals
  * URL: /animals
  * Method: GET
  */
 
-router.get("/", (req, res) => {
-  res.send("GET all animals");
-});
+router.get("/", animalController.createAnimal);
 
 /**
  * Get animal by id
@@ -17,9 +17,7 @@ router.get("/", (req, res) => {
  * Method: GET
  */
 
-router.get("/:id", (req, res) => {
-  res.send(`animal: ${req.params.id}`);
-});
+router.get("/:id", animalController.getAnimalByID);
 
 /**
  * Created animal
@@ -27,9 +25,7 @@ router.get("/:id", (req, res) => {
  * Method: POST
  */
 
-router.post("/", (req, res) => {
-  res.send("Created animal");
-});
+router.post("/", animalController.createAnimal);
 
 /**
  * Update animal
@@ -37,9 +33,7 @@ router.post("/", (req, res) => {
  * Method: PUT
  */
 
-router.put("/:id", (req, res) => {
-  res.send(`Updated animal by id: ${req.params.id}`);
-});
+router.put("/:id", animalController.updateAnimal);
 
 /**
  * Patche animal
@@ -47,9 +41,7 @@ router.put("/:id", (req, res) => {
  * Method: PATCH
  */
 
-router.patch("/:id", (req, res) => {
-  res.send(`Patched animal: ${req.params.id}`);
-});
+router.patch("/:id", animalController.patchAnimalByID);
 
 /**
  * Deleted animal
@@ -57,8 +49,6 @@ router.patch("/:id", (req, res) => {
  * Method: DELETE
  */
 
-router.delete("/:id", (req, res) => {
-  res.send(`Deleted animal by id: ${req.params.id}`);
-});
+router.delete("/:id", animalController.deleteAnimalByID);
 
 module.exports = router;

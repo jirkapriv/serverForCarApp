@@ -1,15 +1,16 @@
 const express = require("express");
 const router = express.Router();
 
+
+const PhonesController = require("../controllers/phones");
+
 /**
  * Get all phones
  * URL: /phones
  * Method: GET
  */
 
-router.get("/", (req, res) => {
-  res.send("GET all phones");
-});
+router.get("/", PhonesController.getALLPhones);
 
 /**
  * Get phone by id
@@ -17,9 +18,7 @@ router.get("/", (req, res) => {
  * Method: GET
  */
 
-router.get("/:id", (req, res) => {
-  res.send(`phone: ${req.params.id}`);
-});
+router.get("/:id", PhonesController.getPhoneByID);
 
 /**
  * Create phone
@@ -27,9 +26,7 @@ router.get("/:id", (req, res) => {
  * Method: POST
  */
 
-router.post("/", (req, res) => {
-  res.send("Created Phone");
-});
+router.post("/", PhonesController.createPhone);
 
 /**
  * Update phone
@@ -37,9 +34,7 @@ router.post("/", (req, res) => {
  * Method: PUT
  */
 
-router.put("/:id", (req, res) => {
-  res.send(`Updated phone: ${req.params.id}`);
-});
+router.put("/:id", PhonesController.updatePhone);
 
 /**
  * Patche phone
@@ -47,9 +42,7 @@ router.put("/:id", (req, res) => {
  * Method: PATCH
  */
 
-router.patch("/:id", (req, res) => {
-  res.send(`Patched phone: ${req.params.id}`);
-});
+router.patch("/:id", PhonesController.patchPhoneByID);
 
 /**
  * Delete phone
@@ -57,8 +50,6 @@ router.patch("/:id", (req, res) => {
  * Method: DELETE
  */
 
-router.delete("/:id", (req, res) => {
-  res.send(`Deleted phone: ${req.params.id}`);
-});
+router.delete("/:id",  PhonesController.deletePhoneByID);
 
 module.exports = router;
