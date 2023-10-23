@@ -1,15 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
+const CarsController = require("../controllers/cars");
 /**
  * Get all cars
  * URL: /cars
  * Method: GET
  */
 
-router.get("/", (req, res) => {
-  res.send("GET all cars");
-});
+router.get("/", CarsController.getALLCars);
 
 /**
  * Get car by id
@@ -17,9 +16,7 @@ router.get("/", (req, res) => {
  * Method: GET
  */
 
-router.get("/:id", (req, res) => {
-  res.send(`car: ${req.params.id}`);
-});
+router.get("/:id", CarsController.getCarByID);
 
 /**
  * Created car
@@ -27,9 +24,7 @@ router.get("/:id", (req, res) => {
  * Method: POST
  */
 
-router.post("/", (req, res) => {
-  res.send("Created Car");
-});
+router.post("/", CarsController.createCar);
 
 /**
  * Update car
@@ -37,9 +32,7 @@ router.post("/", (req, res) => {
  * Method: PUT
  */
 
-router.put("/:id", (req, res) => {
-  res.send(`Updated car by id: ${req.params.id}`);
-});
+router.put("/:id", CarsController.updateCar);
 
 /**
  * Patche car
@@ -47,9 +40,7 @@ router.put("/:id", (req, res) => {
  * Method: PATCH
  */
 
-router.patch("/:id", (req, res) => {
-  res.send(`Patched car: ${req.params.id}`);
-});
+router.patch("/:id", CarsController.patchCarByID);
 
 /**
  * Deleted car
@@ -57,8 +48,6 @@ router.patch("/:id", (req, res) => {
  * Method: DELETE
  */
 
-router.delete("/:id", (req, res) => {
-  res.send(`Deleted car by id: ${req.params.id}`);
-});
+router.delete("/:id", CarsController.deleteCarByID);
 
 module.exports = router;
