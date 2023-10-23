@@ -7,6 +7,8 @@ const logger = require('morgan');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const phonesRouter = require('./routes/phones');
+const carsRouter = require('./routes/cars');
+const animalRouter = require('./routes/animal');
 
 const app = express();
 
@@ -24,6 +26,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 app.use("/phones", phonesRouter)
+app.use("/cars", carsRouter)
+app.use("/animals", animalRouter)
 
 
 app.use(function(req, res, next) {

@@ -2,63 +2,63 @@ const express = require("express");
 const router = express.Router();
 
 /**
- * Get all phones
- * URL: /phones
+ * Get all cars
+ * URL: /cars
  * Method: GET
  */
 
 router.get("/", (req, res) => {
-  res.send("GET all phones");
+  res.send("GET all cars");
 });
 
 /**
- * Get phone by id
- * URL: /phones/:id
+ * Get car by id
+ * URL: /cars/:id
  * Method: GET
  */
 
 router.get("/:id", (req, res) => {
-  res.send(`phone: ${req.params.id}`);
+  res.send(`car: ${req.params.id}`);
 });
 
 /**
- * Create phone
- * URL: /phones
+ * Created car
+ * URL: /cars
  * Method: POST
  */
 
 router.post("/", (req, res) => {
-  res.send("Created Phone");
+  res.send("Created Car");
 });
 
 /**
- * Update phone
- * URL: /phones/:id
+ * Update car
+ * URL: /cars/:id
  * Method: PUT
  */
 
 router.put("/:id", (req, res) => {
-  res.send(`Updated phone: ${req.params.id}`);
+  res.send(`Updated car by id: ${req.params.id}`);
 });
 
 /**
- * Patche phone
- * URL: /phones/:id
+ * Patche car
+ * URL: /cars/:id
  * Method: PATCH
  */
 
 router.patch("/:id", (req, res) => {
-  res.send(`Patched phone: ${req.params.id}`);
+  res.send(`Patched car: ${req.params.id}`);
 });
 
 /**
- * Delete phone
- * URL: /phones/:id
+ * Deleted car
+ * URL: /cars/:id
  * Method: DELETE
  */
 
 router.delete("/:id", (req, res) => {
-  res.send(`Deleted phone: ${req.params.id}`);
+  res.send(`Deleted car by id: ${req.params.id}`);
 });
 
 module.exports = router;
