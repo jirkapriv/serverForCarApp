@@ -5,7 +5,17 @@ exports.getCarByID = (req, res) => {
   res.send(`car: ${req.params.id}`);
 };
 exports.createCar = (req, res) => {
-  res.send("CREATED CAR");
+  
+  const myCar = {
+    "name ": "Lambo",
+    "model": 1984,
+    "color": "orange",
+    "shifting": "manual"
+  }
+  res.send({
+    "url": `http://localhost:3000/cars/${req.params.id}`,
+    "car": myCar
+  })
 };
 exports.updateCar = (req, res) => {
   res.send(`Updated car by id: ${req.params.id}`);
