@@ -4,6 +4,21 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+/* mongoose  Connect*/
+
+const mongoose = require('mongoose');
+mongoose
+.connect('mongodb+srv://admin:adminadmin@cluster0.on9knl8.mongodb.net/mongodbponedelijedna?retryWrites=true&w=majority')
+.then(() =>{
+  console.log("Database connected")
+})
+.catch((err)=>{
+  console.log(err)
+})
+
+/* mongoose  */
+
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const phonesRouter = require('./routes/phones');

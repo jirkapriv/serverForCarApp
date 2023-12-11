@@ -40,7 +40,7 @@ router.put("/:id", CarsController.updateCar);
  * Method: PATCH
  */
 
-router.patch("/:id", CarsController.patchCarByID);
+router.patch("/:id", CarsController.patchCar);
 
 /**
  * Deleted car
