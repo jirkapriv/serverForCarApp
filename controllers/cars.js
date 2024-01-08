@@ -102,6 +102,23 @@ exports.patchCar = async (req, res) => {
     res.status(500).send(err);
   }
 };
-exports.deleteCarByID = (req, res) => {
-  res.send(`Deleted car by id: ${req.params.id}`);
+exports.deleteCarByID = async (req, res) => {
+
+try {
+
+  const result = await Car.findByIdAndDelete(req.params.id);
+    if (result) {
+      return res.status(200).send({
+        msg: "Bylo smazano auto",
+        payload: result,
+      });
+    }
+    res.status(500).send({
+      msg: "auto nebylo smazano",
+    });
+
+} catch (err) {
+  res.status(500).send(err);
+}
+
 };
