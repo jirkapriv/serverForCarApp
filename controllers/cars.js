@@ -17,7 +17,7 @@ exports.getALLCars = async (req, res) => {
   }
 };
 
-exports.getCarByID = async(req, res) => {
+exports.getCarByID = async (req, res) => {
   try {
     const result2 = await Car.findById(req.params.id);
     if (result2) {
@@ -58,22 +58,49 @@ exports.createCar = async (req, res) => {
   }
 };
 
-exports.updateCar = (req, res) => {
-  const update = {
-    name: req.body.name,
-    model: req.body.model,
-    color: req.body.color,
-    shifting: req.body.shifting,
-    seats: req.body.seats,
-  };
-  res.send({ update });
-};
-exports.patchCar = (req, res) => {
-  const update = {};
-  for (const ops of req.body) {
-    update[ops.propName] = ops.value;
+exports.updateCar = async (req, res) => {
+  try {
+    const update = {
+      name: req.body.name,
+      model: req.body.model,
+      color: req.body.color,
+      shifting: req.body.shifting,
+      year: req.body.year,
+    };
+    const result = await Car.findByIdAndUpdate(req.params.id, update);
+    if (result) {
+      return res.status(200).send({
+        msg: "Bylo updatenuto auto",
+        payload: result,
+      });
+    }
+    res.status(500).send({
+      msg: "auto nebylo updatenuto",
+    });
+  } catch (err) {
+    res.status(500).send(err);
   }
-  res.send({ update });
+};
+exports.patchCar = async (req, res) => {
+  try {
+    const update = {};
+    for (const ops of req.body) {
+      update[ops.propName] = ops.value;
+    }
+
+    const result = await Car.findByIdAndUpdate(req.params.id, update);
+    if (result) {
+      return res.status(200).send({
+        msg: "Bylo updatenuto auto",
+        payload: result,
+      });
+    }
+    res.status(500).send({
+      msg: "auto nebylo updatenuto",
+    });
+  } catch (err) {
+    res.status(500).send(err);
+  }
 };
 exports.deleteCarByID = (req, res) => {
   res.send(`Deleted car by id: ${req.params.id}`);
