@@ -4,7 +4,7 @@ exports.getALLCars = async (req, res) => {
   try {
     const result2 = await Car.find();
     if (result2) {
-      return res.status(201).send({
+      return res.status(200).send({
         msg: "Byla nalezena auta",
         payload: result2,
       });
@@ -21,7 +21,7 @@ exports.getCarByID = async (req, res) => {
   try {
     const result2 = await Car.findById(req.params.id);
     if (result2) {
-      return res.status(201).send({
+      return res.status(200).send({
         msg: "Bylo nalezeno auto",
         payload: result2,
       });
